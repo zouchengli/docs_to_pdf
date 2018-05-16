@@ -13,7 +13,7 @@ public class POICoverter {
 
     public static void main(String[] args) {
         System.out.println("Start");
-        convertToPDF("/root/Documents/Test1111.doc", "/root/Documents/Test1111.pdf");
+        convertToPDF("C:\\Users\\Administrator\\Documents\\test1.docx", "C:\\Users\\Administrator\\Documents\\test1.pdf");
     }
 
     public static void convertToPDF(String docPath, String pdfPath) {

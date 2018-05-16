@@ -1,8 +1,14 @@
 package com.yeokhengmeng.docstopdfconverter;
 
+import java.awt.*;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.BaseFont;
+import fr.opensagres.xdocreport.itext.extension.font.IFontProvider;
 import org.apache.poi.xwpf.converter.pdf.PdfConverter;
 import org.apache.poi.xwpf.converter.pdf.PdfOptions;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -21,10 +27,38 @@ public class DocxToPDFConverter extends Converter {
 
         XWPFDocument document = new XWPFDocument(inStream);
 
-        PdfOptions options = PdfOptions.create();
+		IFontProvider iFontProvider = new IFontProvider() {
+			public Font getFont(String s, String s1, float v, int i, Color color) {
+				BaseFont baseFont = null;
+				try {
+					baseFont = BaseFont.createFont("C:/Windows/Fonts/simsun.ttc,1", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+				} catch (DocumentException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return new Font(baseFont, v, i, color);
+			}
+		};
 
-        
+		IFontProvider iFontProvider1 = new IFontProvider() {
+			public Font getFont(String s, String s1, float v, int i, Color color) {
+				BaseFont baseFont = null;
+				try {
+					baseFont = BaseFont.createFont("C:/Windows/Fonts/msyh.ttc,1", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+				} catch (DocumentException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return new Font(baseFont, v, i, color);
+			}
+		};
+
+        PdfOptions options = PdfOptions.create().fontProvider(iFontProvider).fontProvider(iFontProvider1);
+
         processing();
+
         PdfConverter.getInstance().convert(document, outStream, options);
         
         finished();

@@ -26,15 +26,15 @@ public class WordPdfUtils {
     protected static final Logger logger = LoggerFactory.getLogger(WordPdfUtils.class);
 
     public static void main(String[] args) throws Exception{
-        String filepath = "/root/Documents/Test1111.doc";
-        String outpath = "/root/Documents/Test1111.pdf";
+        String filepath = "C:\\Users\\Administrator\\Documents\\test1.docx";
+        String outpath = "C:\\Users\\Administrator\\Documents\\test1.pdf";
 
         InputStream source = new FileInputStream(filepath);
         OutputStream target = new FileOutputStream(outpath);
         Map<String, String> params = new HashMap<String, String>();
 
 
-        PdfOptions options = PdfOptions.create();
+        PdfOptions options = PdfOptions.create().fontEncoding("SimSun");
 
         wordConverterToPdf(source, target, options, params);
     }
