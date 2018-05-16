@@ -1,4 +1,4 @@
-package com.yeokhengmeng.docstopdfconverter;
+package site.clzblog.docs.to.pdf.other;
 
 import com.artofsolving.jodconverter.DocumentConverter;
 import com.artofsolving.jodconverter.openoffice.connection.OpenOfficeConnection;

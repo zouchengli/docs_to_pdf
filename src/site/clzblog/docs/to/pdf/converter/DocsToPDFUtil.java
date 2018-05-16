@@ -1,4 +1,4 @@
-package com.yeokhengmeng.docstopdfconverter;
+package site.clzblog.docs.to.pdf.converter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,8 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-
-public class MainClass {
+/**
+ * This util class is documents(doc,docx,ppt,pptx,odt) trans to pdf file
+ *
+ * @Author chengli.zou
+ * @CreateDate 2018-05-16
+ */
+public class DocsToPDFUtil {
 
     public static void main(String[] args) {
         Converter converter;
@@ -84,7 +89,6 @@ public class MainClass {
         return converter;
 
     }
-
 
     protected static InputStream getInFileStream(String inputFilePath) throws FileNotFoundException {
         File inFile = new File(inputFilePath);

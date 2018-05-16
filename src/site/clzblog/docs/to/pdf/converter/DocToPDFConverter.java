@@ -1,4 +1,4 @@
-package com.yeokhengmeng.docstopdfconverter;
+package site.clzblog.docs.to.pdf.converter;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -7,7 +7,6 @@ import java.io.PrintStream;
 import org.docx4j.Docx4J;
 import org.docx4j.convert.in.Doc;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
-
 
 public class DocToPDFConverter extends Converter {
 
@@ -22,11 +21,10 @@ public class DocToPDFConverter extends Converter {
 
         InputStream iStream = inStream;
 
-
         WordprocessingMLPackage wordMLPackage = getMLPackage(iStream);
 
-
         processing();
+
         Docx4J.toPDF(wordMLPackage, outStream);
 
         finished();

@@ -1,4 +1,4 @@
-package com.yeokhengmeng.docstopdfconverter;
+package site.clzblog.docs.to.pdf.converter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -16,7 +16,6 @@ public class PptToPDFConverter extends PptxToPDFConverter {
 	public PptToPDFConverter(InputStream inStream, OutputStream outStream, boolean showMessages, boolean closeStreamsWhenComplete) {
 		super(inStream, outStream, showMessages, closeStreamsWhenComplete);
 	}
-
 
 	@Override	
 	protected Dimension processSlides() throws IOException{

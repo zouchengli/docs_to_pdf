@@ -1,12 +1,9 @@
-package com.yeokhengmeng.docstopdfconverter;
+package site.clzblog.docs.to.pdf.converter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-
-
 public abstract class Converter {
-
 
 	private final String LOADING_FORMAT = "\nLoading stream\n\n";
 	private final String PROCESSING_FORMAT = "Load completed in %1$dms, now converting...\n\n";
@@ -69,23 +66,14 @@ public abstract class Converter {
 		sendToOutputOrNot(String.format(SAVING_FORMAT, prevProcessTook, timeTaken));
 	}
 
-
 	private void sendToOutputOrNot(String toBePrinted){
 		if(showOutputMessages){
 			actuallySendToOutput(toBePrinted);
 		}
 	}
-	
-	
+
 	protected void actuallySendToOutput(String toBePrinted){
 		System.out.println(toBePrinted);
 	}
-
-
-
-
-
-
-
 
 }

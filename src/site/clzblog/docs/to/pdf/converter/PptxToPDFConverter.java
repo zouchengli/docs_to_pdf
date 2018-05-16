@@ -1,4 +1,4 @@
-package com.yeokhengmeng.docstopdfconverter;
+package site.clzblog.docs.to.pdf.converter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -17,25 +17,18 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
 
-
 public class PptxToPDFConverter extends Converter{
-
-	
 
 	public PptxToPDFConverter(InputStream inStream, OutputStream outStream, boolean showMessages, boolean closeStreamsWhenComplete) {
 		super(inStream, outStream, showMessages, closeStreamsWhenComplete);
 	}
 
-
 	private XSLFSlide[] slides;
-	
 
 	@Override
 	public void convert() throws Exception {
 		loading();
 		
-
-
 		Dimension pgsize = processSlides();
 		
 		processing();
@@ -44,7 +37,6 @@ public class PptxToPDFConverter extends Converter{
 	    AffineTransform at = new AffineTransform();
 	    at.setToScale(zoom, zoom);
 
-		
 		Document document = new Document();
 
 		PdfWriter writer = PdfWriter.getInstance(document, outStream);
@@ -75,8 +67,8 @@ public class PptxToPDFConverter extends Converter{
 		
 		//Not sure what repercussions are there for closing a writer but just do it.
 		writer.close();
+
 		finished();
-		
 
 	}
 	
@@ -91,8 +83,7 @@ public class PptxToPDFConverter extends Converter{
 	protected int getNumSlides(){
 		return slides.length;
 	}
-	
-	
+
 	protected void drawOntoThisGraphic(int index, Graphics2D graphics){
 		slides[index].draw(graphics);
 	}
@@ -101,11 +92,4 @@ public class PptxToPDFConverter extends Converter{
 		return slides[index].getBackground().getFillColor();
 	}
 	
-	
-	
-	
-
-
-
-
 }
