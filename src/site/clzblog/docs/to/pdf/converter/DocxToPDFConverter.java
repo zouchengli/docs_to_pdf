@@ -26,18 +26,14 @@ public class DocxToPDFConverter extends Converter {
         XWPFDocument document = new XWPFDocument(inStream);
 
         // Customer appoint font
-        IFontProvider iFontProvider = new IFontProvider() {
-            public Font getFont(String s, String s1, float v, int i, Color color) {
-                BaseFont baseFont = null;
-                try {
-                    baseFont = BaseFont.createFont("C:/Windows/Fonts/simsun.ttc,1", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                } catch (DocumentException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return new Font(baseFont, v, i, color);
+        IFontProvider iFontProvider = (s, s1, v, i, color) -> {
+            BaseFont baseFont = null;
+            try {
+                baseFont = BaseFont.createFont("C:/Windows/Fonts/simsun.ttc,1", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            } catch (DocumentException | IOException e) {
+                e.printStackTrace();
             }
+            return new Font(baseFont, v, i, color);
         };
 
         // Customer appoint font
@@ -46,9 +42,7 @@ public class DocxToPDFConverter extends Converter {
                 BaseFont baseFont = null;
                 try {
                     baseFont = BaseFont.createFont("C:/Windows/Fonts/msyh.ttc,1", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-                } catch (DocumentException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+                } catch (DocumentException | IOException e) {
                     e.printStackTrace();
                 }
                 return new Font(baseFont, v, i, color);
